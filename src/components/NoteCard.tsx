@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import reactMarkdown from "react-markdown";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 import { RouterOutputs } from "~/utils/api"
 
@@ -24,6 +24,14 @@ export const NoteCard = ({
                     onClick={() => setIsExpanded(!isExpanded)}
                 >
                     <div className="collapse-title text-xl fond-bold">{note.title}</div>
+                    <div className="collapse-content">
+                        <article className="prose lg:prose-xl">
+                            <ReactMarkdown>{note.content}</ReactMarkdown>
+                        </article>
+                    </div>
+                </div>
+                <div className="card-actions mx-2 flex justify-end">
+                    <button className="btn btn-warning btn-xs px-5" onClick={onDelete}>Delete</button>
                 </div>
             </div>
         </div>
